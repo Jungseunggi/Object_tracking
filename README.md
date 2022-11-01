@@ -54,9 +54,53 @@ while True:
 
 - 아직은 배경을 제대로 분리하지를 못함(그림자, 차선, 나무 등)
 
+
+```
+import cv2
+
+cap = cv2.VideoCapture("highway.mp4")
+
+# history를 통해 프레임간의 차이를 계산(따라서 카메라가 움직이면 다시 초기화),varThreshold를 통해 임계값 설정
+object_detector = cv2.createBackgroundSubtractorMOG2(history=50, varThreshold=50) 
+
+while True:
+    ret, frame = cap.read()
+
+    mask = object_detector.apply(frame)
+
+    <span style="color:red"># threshold를 통해 254이하는 모두 제거 따라서 회색은 삭제되고 흰색만 남음 -> 그림자 제거<span>
+    _, mask = cv2.threshold(mask, 254, 255, cv2.THRESH_BINARY)
+    
+    # 경계선 추출
+    contours, _ = cv2.findContours(mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+        
+    for cnt in contours:
+        # 경계선을 추출하면 배경에도 자잘한것들이 보여진다. 여기서 작은 면적들은 제거
+        area = cv2.contourArea(cnt)
+        if area > 100:
+            cv2.drawContours(frame, [cnt], -1,(0,0,255),1)
+
+
+    cv2.imshow("Frame", frame)
+    cv2.imshow("Mask", mask)
+```
+
 <img src="https://user-images.githubusercontent.com/102225200/199158258-755ae8cf-1784-45d1-8705-c11ac517ed9b.gif" width="400">
 
-- 따라서 경계선, 그림자, 파라미터 등을 조절하여 정교하게 탐지 되도록 수정 
+- 따라서 경계선, 그림자, 파라미터 등을 조절하여 정교하게 탐지 되도록 수정
+ 
+- 하지만 여전히 배경에서 탐지되는 부분들이 존재
 
+```
+# 영상의 해상도는 1280*720으로 관심영역을 지정
+roi = frame[340: 720,500: 800]
+```
+<img src="https://user-images.githubusercontent.com/102225200/199160412-372abee2-1bd4-43da-9b6a-5f84736b7f42.gif" width="400">
+
+- 탐지할 부분을 설정하여 배경에서 탐지되든 부분들을 제거
+
+
+- 이렇게 마스크를 씌어진 영상에서 객체를 박스처리
+  
 **참고논문 https://www.researchgate.net/publication/301775263_A_Survey_on_Moving_Object_Detection_and_Tracking_Techniques**
 
