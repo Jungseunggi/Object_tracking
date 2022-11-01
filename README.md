@@ -1,6 +1,6 @@
 # Object_tracking
 
-## 1. 방법론
+## 1. 논문 방법 및 내용 요약
 <img src="https://user-images.githubusercontent.com/102225200/199154806-97f6915b-842f-40aa-830a-bdf369599cdf.png" width="300">
 
 
