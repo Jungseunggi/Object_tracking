@@ -99,8 +99,18 @@ roi = frame[340: 720,500: 800]
 
 - 탐지할 부분을 설정하여 배경에서 탐지되든 부분들을 제거
 
+<img src="https://user-images.githubusercontent.com/102225200/199161329-9c2b61fd-1937-4120-b915-5cbfe39ce27c.gif" width="400">
 
 - 이렇게 마스크를 씌어진 영상에서 객체를 박스처리
-  
-**참고논문 https://www.researchgate.net/publication/301775263_A_Survey_on_Moving_Object_Detection_and_Tracking_Techniques**
+
+## 3. Object tracking을 접하게된 계기
+
+Computer vision에 대해 관심이 많았는데 지식이 많이 부족하다고 느낌. computer vision하면 떠오르는게 object detection과 tracking이 가장 대표적이라고 생각함. 이를 통해 조금 더 성장하고 싶었음.
+
+## 4. 후기
+
+이번에 참고한 논문은 object tracking의 기본이라고 알고 있어서 참고 함. 하지만 이해는 되어도 어떻게 구현해야될지 어려운 부분들이 많음. 
+따라서 유투브를 통해 직접 해보면서 어떻게 작동되는지 이해하는 방향으로 진행했음. 이 후 더 보완하여 객체탐지 모델과 연동을 시켜서 car1, car2, motorcycle1, motorcycle2 ... 이런식으로 카테고리도 분류하면서 추적하는 방향으로 진행하고 싶음.
+
+
 
