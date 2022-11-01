@@ -8,7 +8,7 @@
 
   - 조건으로는 고정된 카메라여야 함 
   
-### 1.1 bject detection
+### 1.1 Object detection
 
 <img src="https://user-images.githubusercontent.com/102225200/199154748-dcf2855c-b83b-4979-85a0-c89fdc176dbc.png" width="300">
 
