@@ -97,7 +97,7 @@ roi = frame[340: 720,500: 800]
 ```
 <img src="https://user-images.githubusercontent.com/102225200/199160412-372abee2-1bd4-43da-9b6a-5f84736b7f42.gif" width="400">
 
-- 탐지할 부분을 설정하여 배경에서 탐지되든 부분들을 제거
+- 탐지할 부분을 설정하여 배경에서 탐지되 부분들을 제거
 
 <img src="https://user-images.githubusercontent.com/102225200/199161329-9c2b61fd-1937-4120-b915-5cbfe39ce27c.gif" width="400">
 
